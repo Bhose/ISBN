@@ -17,6 +17,21 @@ class TestISBN< Minitest::Test
 		assert_equal("invalid", isbn(my_number))
 	end
 
+	def test_assert_that_arrays_are_not_integers
+		my_number = ["hi", "bye"]
+		assert_equal("invalid", isbn(my_number))
+	end
+
+	def test_assert_that_hashes_are_not_integers
+		my_number = {:brit => "awesome", :coffee => "heaven"}
+		assert_equal("invalid", isbn(my_number))
+	end
+
+	def test_assert_that_floats_are_not_integers
+		my_number = 11.02020202
+		assert_equal("invalid", isbn(my_number))
+	end
+
 	def test_assert_that_10_digit_nums_are_valid
 		my_number = 1234567891
 		assert_equal("valid", isbn_length(my_number))
