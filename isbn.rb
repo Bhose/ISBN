@@ -26,33 +26,26 @@ def isbn10_validity(my_number)
 		if ans % 11 == check_digit
 			return "valid"
 		else
-			 return "invalid"
+			return "invalid"
 		end
 end
 
-	
-# 	my_number.each_with_index {| num, idx | ans += (idx) * num } 
-# 	if ans % 11 == check_digit
-# 		"valid"
-# 	else
-# 		"invalid"
-# 	end
-# end
-
-# def isbn13_validity(my_number)
-# 	ans = 0
-# 	my_number.map.with_index{|v,i| ans = i % 2 == 0 ? v : v * 3 } || my_number.map.with_index{|v,i| ans = i % 1 == 0 ? v : v * 1 }
-# 	ans = ans % 10 
-# 	ans = ans - 10
-# 	puts ans
-
-# 	if ans == my_number[12]
-# 		"valid"
-# 	else
-# 		"invalid"
-# 	end
-	 
+def isbn13_validity(my_number)
+	ans = 0
+	my_number.each_with_index do |num, idx|
+		if idx % 2 == 0 
+			ans += num * 3
+		elsif 
+			ans += num * 1
+		end
+	end
+	ans = ans % 10 
+	ans = 10 - ans
 
 
-# my_number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
-# my_number.map.with_index(&:*).inject(:+)
+	if ans == my_number[12]
+		return "valid"
+	else
+		return "invalid"
+	end
+end	 
